@@ -17,9 +17,12 @@ class Dotti():
         self.connection.disconnect()
 
     def setPixelColor(self, pixel, red, green, blue):
-        self.command.write(struct.pack('<BBBBBB', 0x07, 0x02, pixel+1, red, green, blue))
+        self.command.write(struct.pack('<BBBBBB', 0x07, 0x02, pixel, red, green, blue))
 
-    def setIcon(self, index):
+    def setColor(self, red, green, blue):
+        self.command.write(struct.pack('<BBBBB', 0x06, 0x01, red, green, blue))
+
+    def showIcon(self, index):
         if index == 1:
             self.command.write(struct.pack('<BBBii', 0x06, 0x08, 0x0, 0, 0))
         elif index == 2:
@@ -38,3 +41,4 @@ class Dotti():
             self.command.write(struct.pack('<BBBi', 0x06, 0x08, 0x02, -16))
         else:
             print('Not available, try [1..8]')
+

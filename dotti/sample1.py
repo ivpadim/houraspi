@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
         #Turn off random led pixel
         pixel = random.randrange(64)
-        dotti.setPixelColor(pixel+1, 0x00, 0x00, 0x00)
+        dotti.setPixelColor(pixel+1, 0, 0, 0)
         time.sleep(0.05)
         if sys.stdin in select.select([sys.stdin], [], [], 0)[0]:
             line = raw_input()
