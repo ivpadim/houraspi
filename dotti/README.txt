@@ -10,3 +10,9 @@ sudo setcap cap_net_raw+ep /usr/bin/hcitool
 hciconfig
 
 hcitool -i hci0 lescan 
+
+
+
+
+Based on repo
+https://github.com/MartyMacGyver/dotti-interfacing
