@@ -22,7 +22,10 @@ class Dotti():
     def setColor(self, red, green, blue):
         self.command.write(struct.pack('<BBBBB', 0x06, 0x01, red, green, blue))
 
-    def showIcon(self, index):
+    def setBarLevel(self, level, red, green, blue):
+        self.command.write(struct.pack('<BBBBBB', 0x07, 19, level, red, green, blue))
+
+    def setIcon(self, index):
         if index == 1:
             self.command.write(struct.pack('<BBBii', 0x06, 0x08, 0x0, 0, 0))
         elif index == 2:

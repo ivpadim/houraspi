@@ -16,11 +16,11 @@ if __name__ == '__main__':
     print("Connected to device: {}".format(device_addr))
     print("Sample 2 running")
     dotti.setColor(0,0,0)
-    for n in range(3):
+    for n in range(4):
         for pixel in range(64):
-            red = random.randrange((pixel+1)*4)
-            green = random.randrange((pixel+1)*4)
-            blue = random.randrange((pixel+1)*4)
+            red = random.randrange(255 if n == 1 else (1 * (pixel + 1)))
+            green = random.randrange(255 if n ==2 else (1 * (pixel + 1)))
+            blue = random.randrange(255 if n ==3 else (1 * (pixel + 1)))
             dotti.setPixelColor(pixel+1, red, green, blue) 
             time.sleep(0.05)
     dotti.disconnect()

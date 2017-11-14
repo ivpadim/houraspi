@@ -17,7 +17,7 @@ if __name__ == '__main__':
     print("Sample 4 running")
     dotti.setColor(0,0,0)
     for n in range(3):
-        dotti.showIcon(5)
+        dotti.setIcon(5)
         time.sleep(1)
         dotti.setColor(0,0,0)
         time.sleep(1)
