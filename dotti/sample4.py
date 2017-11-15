@@ -15,11 +15,11 @@ if __name__ == '__main__':
     
     print("Connected to device: {}".format(device_addr))
     print("Sample 4 running")
-    dotti.setColor(0,0,0)
+    dotti.setColor((0,0,0))
     for n in range(3):
         dotti.setIcon(5)
         time.sleep(1)
-        dotti.setColor(0,0,0)
+        dotti.setColor((0,0,0))
         time.sleep(1)
 
     dotti.disconnect()

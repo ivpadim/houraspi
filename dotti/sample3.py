@@ -10,20 +10,19 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         device_addr = sys.argv[1]
     
-    dotti = Dotti(device_addr)
-    dotti.connect() 
-    
-    print("Connected to device: {}".format(device_addr))
-    print("Sample 3 running")
-    dotti.setColor(0,0,0)
-    for n in range(5):
-        red = random.randrange(256)
-        green = random.randrange(256)
-        blue = random.randrange(256)
-        for pixel in range(64):
-            dotti.setPixelColor(pixel + 1, red, green, blue)
-            time.sleep(0.05)
-    dotti.disconnect()
+    with Dotti(device_addr, None, True) as dotti:
+        print("Connected to device: {}".format(device_addr))
+        print("Sample 3 running")
+        black = (0,0,0)
+        dotti.setColor(black)
+        for n in range(5):
+            red = random.randrange(256)
+            green = random.randrange(256)
+            blue = random.randrange(256)
+            color = (red, green, blue)
+            for pixel in range(64):
+                dotti.setPixelColor(pixel + 1, color)
+                time.sleep(0.05)
     print("Disconnected from device")
     print("Goodbye!")
     exit()

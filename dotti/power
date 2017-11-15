@@ -1,0 +1,15 @@
+#!/usr/bin/env python2.7
+
+import time
+import sys
+from dotti import Dotti
+
+if __name__ == '__main__':
+    power = 'on'
+    if len(sys.argv) > 1:
+        power = sys.argv[1]
+    with Dotti('5C:31:3E:89:8F:F2', None, True) as dotti:
+        on  = (255,255,255)
+        off = (0,0,0)
+        dotti.setColor((on if power == 'on' else off))
+        time.sleep(0.1)

@@ -14,14 +14,14 @@ if __name__ == '__main__':
     print("Connected to device: {}".format(device_addr))
     print("Sample 6 running")
     print("Press enter to exit")
-    dotti.setColor(0,0,0)
+    dotti.setColor((0,0,0))
 
     while True:
         level = random.randrange(7)
         red = random.randrange(256)
         green = random.randrange(256)
         blue =random.randrange(256)
-        dotti.setBarLevel(level + 1, red, green, blue)
+        dotti.setBarLevel(level + 1, (red, green, blue))
         delay = random.randrange(50)
         time.sleep(0.45 + (1/(delay + 1)))
         if sys.stdin in select.select([sys.stdin], [], [], 0)[0]:

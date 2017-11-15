@@ -3,11 +3,19 @@ import bluepy
 import bluepy.btle as btle
 
 class Dotti():
-    def __init__(self, device_addr, address_type=None):
+    def __init__(self, device_addr, address_type=None, connect=False):
         self.device_addr  = device_addr
         if not address_type:
             address_type  = btle.ADDR_TYPE_PUBLIC
         self.address_type = address_type
+        if connect:
+            self.connect()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.disconnect()
 
     def connect(self):
         self.connection = btle.Peripheral(self.device_addr, self.address_type)
@@ -16,13 +24,16 @@ class Dotti():
     def disconnect(self):
         self.connection.disconnect()
 
-    def setPixelColor(self, pixel, red, green, blue):
+    def setPixelColor(self, pixel, color):
+        red, green, blue = color
         self.command.write(struct.pack('<BBBBBB', 0x07, 0x02, pixel, red, green, blue))
 
-    def setColor(self, red, green, blue):
+    def setColor(self, color):
+        red, green, blue = color
         self.command.write(struct.pack('<BBBBB', 0x06, 0x01, red, green, blue))
 
-    def setBarLevel(self, level, red, green, blue):
+    def setBarLevel(self, level, color):
+        red, green, blue = color
         self.command.write(struct.pack('<BBBBBB', 0x07, 19, level, red, green, blue))
 
     def setIcon(self, index):
