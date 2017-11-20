@@ -7,7 +7,7 @@ import cv2, time, sys, select
 
 
 with Dotti('5C:31:3E:89:8F:F2', None, True) as dotti:
-    dotti.setColor(black)
+    dotti.setColor((0,0,0))
     
     #Load a cascade file for detecting faces
     face_cascade = cv2.CascadeClassifier('/usr/share/opencv/haarcascades/haarcascade_frontalface_default.xml')
