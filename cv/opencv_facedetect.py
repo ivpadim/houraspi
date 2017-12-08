@@ -9,11 +9,11 @@ face_cascade = cv2.CascadeClassifier('/usr/share/opencv/haarcascades/haarcascade
 
 print("Press {enter} to exit")
 
-resolution = (640, 480)
+resolution = (320, 240)
 #Get the picture (low resolution, so it should be quite fast)
 with PiCamera(
         resolution = resolution,
-        framerate = Fraction(1, 6)
+        framerate = 32#Fraction(1, 6)
         ) as camera:
     rawCapture = PiRGBArray(camera, size=resolution)
     for frame in camera.capture_continuous(rawCapture,"bgr", use_video_port=True):
